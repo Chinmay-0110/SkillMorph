@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillMorph Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-6">
+
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6 space-y-8">
+
+    <h2 class="text-2xl font-bold text-indigo-700">🎯 SkillMorph Dashboard</h2>
+
+    <!-- Skill Input + Recommendation -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">What's your current skill or interest?</label>
+      <input type="text" id="skillInput" placeholder="e.g., Graphic Design" class="w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-400">
+      <button onclick="generatePath()" class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Generate Skill Path</button>
+    </div>
+
+    <div id="recommendation" class="hidden bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded text-gray-800"></div>
+
+    <!-- Progress Tracker -->
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-3">📊 Progress Tracker</h3>
+      <ul id="progressList" class="space-y-2">
+        <li><label><input type="checkbox" onchange="markComplete(this, 0)"> Learn basics of UX/UI</label></li>
+        <li><label><input type="checkbox" onchange="markComplete(this, 1)"> Complete Figma project</label></li>
+        <li><label><input type="checkbox" onchange="markComplete(this, 2)"> Build a portfolio</label></li>
+      </ul>
+    </div>
+
+    <!-- AI Chat Mentor -->
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-3">🤖 AI Mentor Chat</h3>
+      <div id="chatBox" class="bg-gray-100 p-4 h-60 overflow-y-auto rounded-lg space-y-3 text-sm text-gray-800 border border-gray-300">
+        <div class="bg-white p-2 rounded shadow">👋 Hi there! I’m your AI mentor. Ask me anything!</div>
+      </div>
+      <div class="mt-2 flex">
+        <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 border border-gray-300 p-2 rounded-l-lg focus:ring-2 focus:ring-indigo-400">
+        <button onclick="sendMessage()" class="bg-indigo-600 text-white px-4 rounded-r-lg hover:bg-indigo-700">Send</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // --- Skill Path Generator with localStorage ---
+    async function generatePath() {
+  const skillInput = document.getElementById('skillInput').value.trim().toLowerCase();
+  const output = document.getElementById('recommendation');
+  if (!skillInput) return (output.classList.add('hidden'));
+
+  // Save only once
+  if (!localStorage.getItem('userSkill')) {
+    localStorage.setItem('userSkill', skillInput);
+  }
+
+  const res = await fetch('skills.json');
+  const skills = await res.json();
+
+  const match = skills.find(s => s.skill === skillInput);
+  if (match) {
+    displaySkillPath(skillInput, match.path);
+  } else {
+    displaySkillPath(skillInput, [
+      "No specific match found.",
+      "Start with basics and grow gradually.",
+      "Use YouTube/Free resources to explore.",
+      "Document your journey!"
+    ]);
+  }
+}
+
+function displaySkillPath(skill, pathArray) {
+  const output = document.getElementById('recommendation');
+  output.classList.remove('hidden');
+  output.innerHTML = `<strong>Recommended Path for ${skill}:</strong><br>` +
+    pathArray.map((step, i) => `${i + 1}. ${step}`).join('<br>');
+  document.getElementById('skillInput').value = skill;
+}
+
+async function getMockResponse(input) {
+  const res = await fetch('mentor_replies.json');
+  const replies = await res.json();
+  return replies[Math.floor(Math.random() * replies.length)];
+}
+  
+    // --- Progress Tracker with localStorage ---
+    const tasks = ['Learn basics of UX/UI', 'Complete Figma project', 'Build a portfolio'];
+  
+    function loadProgress() {
+      // Load and apply skill from storage
+      const savedSkill = localStorage.getItem('userSkill');
+      if (savedSkill) {
+        displaySkillPath(savedSkill);
+      }
+  
+      // Load progress
+      const saved = JSON.parse(localStorage.getItem('skillProgress') || '[]');
+      saved.forEach((done, i) => {
+        const checkbox = document.querySelectorAll('#progressList input')[i];
+        checkbox.checked = done;
+        if (done) {
+          checkbox.parentElement.classList.add('line-through', 'text-gray-400');
+        }
+      });
+    }
+  
+    function markComplete(checkbox, index) {
+      const allCheckboxes = document.querySelectorAll('#progressList input');
+      const status = Array.from(allCheckboxes).map(c => c.checked);
+      localStorage.setItem('skillProgress', JSON.stringify(status));
+  
+      if (checkbox.checked) {
+        checkbox.parentElement.classList.add('line-through', 'text-gray-400');
+      } else {
+        checkbox.parentElement.classList.remove('line-through', 'text-gray-400');
+      }
+    }
+  
+    // --- Chat Bot Mock ---
+    async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const message = input.value.trim();
+  if (!message) return;
+
+  const chatBox = document.getElementById('chatBox');
+  const userMsg = document.createElement('div');
+  userMsg.className = "bg-indigo-100 p-2 rounded self-end";
+  userMsg.textContent = `🧑 You: ${message}`;
+  chatBox.appendChild(userMsg);
+
+  const botMsg = document.createElement('div');
+  botMsg.className = "bg-white p-2 rounded shadow";
+
+  setTimeout(async () => {
+    const response = await getMockResponse(message);
+    botMsg.textContent = `🤖 SkillMorph: "${response}"`;
+    chatBox.appendChild(botMsg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 500);
+
+  input.value = '';
+}
+  
+    function getMockResponse(input) {
+      const responses = [
+        "That's a great goal! Start small and build up gradually.",
+        "I recommend practicing daily — even 15 minutes can make a difference.",
+        "Try applying what you learn in mini-projects.",
+        "You’re doing awesome. Keep pushing forward!",
+        "Check out a course on Coursera or freeCodeCamp for that."
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+  
+    // --- Init on page load ---
+    window.onload = loadProgress;
+  </script>
+
+</body>
+</html>

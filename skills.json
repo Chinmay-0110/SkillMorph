@@ -1,0 +1,192 @@
+[
+    {
+      "skill": "graphic design",
+      "path": [
+        "Learn design principles and color theory",
+        "Use tools like Canva, Figma, or Adobe XD",
+        "Recreate existing designs to practice",
+        "Build and share your portfolio online"
+      ]
+    },
+    {
+      "skill": "web development",
+      "path": [
+        "Learn HTML, CSS, and JavaScript",
+        "Build responsive websites",
+        "Learn frameworks like React or Vue",
+        "Host projects on GitHub or Netlify"
+      ]
+    },
+    {
+      "skill": "data science",
+      "path": [
+        "Learn Python and data libraries (NumPy, Pandas)",
+        "Explore data visualization tools like Matplotlib or Seaborn",
+        "Work on real-world datasets from Kaggle",
+        "Build ML models and share insights"
+      ]
+    },
+    {
+      "skill": "cybersecurity",
+      "path": [
+        "Understand basics of networking and protocols",
+        "Practice Linux and command-line tools",
+        "Explore ethical hacking with platforms like TryHackMe",
+        "Earn beginner-level certs (CompTIA Security+)"
+      ]
+    },
+    {
+      "skill": "ui ux design",
+      "path": [
+        "Learn user research and empathy mapping",
+        "Create wireframes and prototypes",
+        "Use Figma or Sketch for UI design",
+        "Test and iterate designs based on feedback"
+      ]
+    },
+    {
+      "skill": "video editing",
+      "path": [
+        "Use tools like Adobe Premiere Pro or DaVinci Resolve",
+        "Edit short videos with transitions and effects",
+        "Learn storytelling and pacing",
+        "Upload final projects to YouTube or Vimeo"
+      ]
+    },
+    {
+      "skill": "game development",
+      "path": [
+        "Learn Unity or Unreal Engine",
+        "Build a simple 2D or 3D game",
+        "Implement basic game physics and UI",
+        "Publish on Itch.io or Steam"
+      ]
+    },
+    {
+      "skill": "mobile app development",
+      "path": [
+        "Learn Flutter or React Native",
+        "Build simple apps with user input",
+        "Connect APIs and Firebase",
+        "Deploy to Google Play or App Store"
+      ]
+    },
+    {
+      "skill": "machine learning",
+      "path": [
+        "Understand linear algebra and statistics",
+        "Use scikit-learn and TensorFlow",
+        "Train models on real datasets",
+        "Optimize and evaluate performance"
+      ]
+    },
+    {
+      "skill": "cloud computing",
+      "path": [
+        "Understand basics of AWS, Azure, or GCP",
+        "Learn about storage, compute, and networking",
+        "Deploy a web app to the cloud",
+        "Study for certs like AWS Cloud Practitioner"
+      ]
+    },
+    {
+      "skill": "artificial intelligence",
+      "path": [
+        "Study AI concepts (search, logic, planning)",
+        "Implement algorithms using Python",
+        "Explore NLP and computer vision projects",
+        "Build an AI-based chatbot or assistant"
+      ]
+    },
+    {
+      "skill": "digital marketing",
+      "path": [
+        "Understand SEO, SEM, and content strategy",
+        "Use tools like Google Analytics and Ads",
+        "Create and test social media campaigns",
+        "Build a personal brand or case study"
+      ]
+    },
+    {
+      "skill": "blockchain development",
+      "path": [
+        "Learn blockchain fundamentals and Ethereum",
+        "Use Solidity to write smart contracts",
+        "Develop dApps using Web3.js",
+        "Deploy and test on testnets"
+      ]
+    },
+    {
+      "skill": "content writing",
+      "path": [
+        "Master grammar, tone, and readability",
+        "Practice blog writing and storytelling",
+        "Write for platforms like Medium or Substack",
+        "Build a writing portfolio"
+      ]
+    },
+    {
+      "skill": "public speaking",
+      "path": [
+        "Learn the structure of compelling talks",
+        "Practice voice modulation and body language",
+        "Join speaking groups like Toastmasters",
+        "Deliver talks at meetups or online"
+      ]
+    },
+    {
+      "skill": "entrepreneurship",
+      "path": [
+        "Learn how to identify and validate ideas",
+        "Create a basic business plan",
+        "Build an MVP or prototype",
+        "Pitch to mentors or incubators"
+      ]
+    },
+    {
+      "skill": "personal finance",
+      "path": [
+        "Track expenses and create a budget",
+        "Understand saving, investing, and credit",
+        "Use finance tools like Mint or YNAB",
+        "Set financial goals and monitor progress"
+      ]
+    },
+    {
+      "skill": "photography",
+      "path": [
+        "Learn camera settings and composition",
+        "Practice with natural and artificial lighting",
+        "Edit photos with Lightroom or Snapseed",
+        "Post your work on Instagram or Unsplash"
+      ]
+    },
+    {
+      "skill": "animation",
+      "path": [
+        "Learn keyframe animation concepts",
+        "Use tools like Adobe After Effects or Blender",
+        "Animate characters or UI elements",
+        "Create a showreel of your animations"
+      ]
+    },
+    {
+      "skill": "networking",
+      "path": [
+        "Understand IP addressing, DNS, and routing",
+        "Set up basic home or office networks",
+        "Use Wireshark and command-line tools",
+        "Prepare for networking certs like CCNA"
+      ]
+    },
+    {
+      "skill": "robotics",
+      "path": [
+        "Learn mechanical + electrical basics",
+        "Use Arduino or Raspberry Pi",
+        "Build and test a robot project",
+        "Program movement and sensors"
+      ]
+    }
+  ]
+  
